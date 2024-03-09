@@ -40,7 +40,7 @@ const SignIn = () => {
   {
     e.preventDefault();
     try {
-        const response = await axios.post(`http://localhost:3000/api/v1/signin`, inputs);
+        const response = await axios.post(`${window.location.origin}/api/v1/signin`, inputs);
         const user = response.data.user;
         if (user)
         {
