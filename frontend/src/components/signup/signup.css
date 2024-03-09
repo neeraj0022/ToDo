@@ -1,0 +1,69 @@
+
+.signup{
+   
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    background-color: antiquewhite;
+    font-family: "Noto Sans";
+    text-align: center;
+}
+
+.signup h4 {
+    font-size: 120px; /* Adjust font size as needed */
+    color: brown;
+}
+
+.divone {
+    width: 40%;
+    border-right: 2px solid black; 
+}
+
+
+
+.divone, .divtwo {
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.divtwo {
+    background-color:aliceblue;
+    font-family: "Noto Sans";
+    border-radius: 17px;
+    margin-left: 30px;
+    width: 50%;
+    padding-top: 25px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 990px) {
+    .signup {
+        flex-direction: column; /* Stack on top of each other on smaller screens */
+        height: 80vh;
+        padding-top: 10px;
+    }
+
+    .signup h4{
+        font-size: 80px;
+    }
+
+    .divone{
+        border: none;
+
+    }
+
+    .divone, .divtwo {
+        width: 100%; /* Each takes full width on smaller screens */
+        max-width: none; /* Reset max-width */
+
+    }
+
+    .divtwo{
+        padding: 35px;
+        margin:0%;
+    }
+}

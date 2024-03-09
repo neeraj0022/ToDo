@@ -1,0 +1,53 @@
+
+.navbar{
+    width: 100%;
+}
+
+.navbar-body {
+    font-family: "Noto Sans";
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar-brand {
+    color: rgb(255, 96, 39);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar-nav{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-collapse{
+    text-align: center;
+    align-items: center;
+}
+
+.btn-nav {
+ 
+    color: white !important;
+    background-color: rgb(255, 96, 39);
+    border-radius: 7px;
+}
+
+@media only screen and (max-width: 990px) {
+    .navbar-collapse{
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn-nav {
+        color: white !important;
+        padding: 5px 6px 5px 6px;
+        background-color: rgb(255, 96, 39);
+        border-radius: 7px;
+    }
+
+}
+
+

@@ -1,0 +1,61 @@
+
+.todo {
+    width: 100%;
+    min-height: 67vh;
+    max-height: auto;
+    justify-content: space-between; /* Ensure space between items */
+    align-items: center;
+    background-color: antiquewhite;
+    font-family: "Noto Sans";
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.todo-main {
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.todo-inputs-div {
+    border-radius: 10px;
+    box-shadow: black 0px 2px 5px;
+    background-color:none;
+
+}
+
+.todo-inputs {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+  
+.todo-card {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+  }
+
+.todo-card-p {
+    text-align: justify;
+    align-items: center;
+    text-justify: inter-word;
+    overflow: hidden;
+}
+
+.card-icons{
+    cursor: pointer;
+}
+
+
+.todo-update{
+    position: absolute;
+    width: 100%;
+    position: fixed;
+    background-color: antiquewhite;
+    height: 67vh;
+    top:67px;
+    left:0px;
+    display: none;
+}
