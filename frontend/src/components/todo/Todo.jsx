@@ -48,6 +48,7 @@ export const Todo = () => {
         else{
             try {
                 await axios.post(`http://localhost:8000/api/v2/addTask`, {
+
                     title: inputs.title,
                     body: inputs.body,
                     id: id,
@@ -65,6 +66,7 @@ export const Todo = () => {
     const del = async (Cardid) => {
         try {
             await axios.delete(`http://localhost:8000/api/v2/deleteTask/${Cardid}`, { data: { id: id } });
+
             // Remove the deleted task from the array
             const updatedArray = array.filter(item => item._id !== Cardid);
             setArray(updatedArray);
@@ -105,6 +107,7 @@ export const Todo = () => {
             try {
                 if (id) {
                     const response = await axios.get(`http://localhost:8000/api/v2/getTask/${id}`);
+
                     setArray(response.data.list);
                 }
             }

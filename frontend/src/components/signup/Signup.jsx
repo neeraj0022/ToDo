@@ -28,15 +28,6 @@ const SignUp = () => {
     setInputs({...inputs, [name]:value });
   }
 
-  // const submit = async(e) =>{
-  //   e.preventDefault();
-  //   await axios.post("http://localhost:8000/api/v1/register", inputs).then((response)=>{
-  //     alert(response.data.message);
-
-  //   setInputs({email:"", username:"", password:""  });
-  //   history("/signIn");
-  //   });
-  // }
 
   const submit = async (e) => {
     e.preventDefault();
@@ -48,6 +39,7 @@ const SignUp = () => {
     else{
       try {
         const response = await axios.post(`http://localhost:8000/api/v1/register`, inputs);
+
         const {message}= response.data;
         toast(message);
         // alert(message);
