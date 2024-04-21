@@ -6,7 +6,7 @@ import axios from "axios";
 import { styled } from "@mui/system";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useNavigate } from "react-router-dom";
 
 const StyledFormControl = styled(FormControl)({
   margin: "10px 0",
@@ -18,6 +18,8 @@ const StyledButton = styled(Button)({
 });
 
 const SignUp = () => {
+
+  const history= useNavigate();
 
   const [inputs, setInputs] =useState({email:"", username:"", password:""  });
 
@@ -36,21 +38,29 @@ const SignUp = () => {
     }
     else{
       try {
-        const response = await axios.post(`${window.location.origin}/api/v1/register`, inputs);
+        const response = await axios.post(`http://localhost:8000/api/v1/register`, inputs);
+
         const {message}= response.data;
         toast(message);
         // alert(message);
-        setInputs({email:"", username:"", password:""});
-        // history("/signIn");
+        setTimeout(() => {
+          handleRedirect(history);
+        }, 4000);
         
       }
       catch (error) {
         const errorMessage = error.response?.data?.message
         alert(errorMessage);
       }
+
     }
+
   };
   
+  const handleRedirect= (history)=>{
+    setInputs({email:"", username:"", password:""});
+    history("/signIn");
+  }
   
 
   return (

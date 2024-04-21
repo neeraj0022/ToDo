@@ -18,23 +18,17 @@ router.post("/addTask", async(req, res) => {
     } catch (error) {
         console.log(error);
     }
-
 })
 
 // update
 
 router.put("/updateTask/:id", async(req, res) => {
     try {
-
-        const {title, body, email} = req.body;
-        const exsistUser = await User.findOne({ email });
-    
-        if(exsistUser){
-            const list= await List.findByIdAndUpdate(req.params.id, {title, body});
-            list.save().then(()=> res.status(200).json({message:"Upadted"}));
-        }
-        
-    } catch (error) {
+        const {title, body} = req.body;
+        const list= await List.findByIdAndUpdate(req.params.id, {title, body});
+        list.save().then(()=> res.status(200).json({message:"Upadted"}));
+    }    
+    catch (error) {
         console.log(error);
     }
 

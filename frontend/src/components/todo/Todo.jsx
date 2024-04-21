@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import './todo.css';
 import TodoCards from './TodoCards';
@@ -6,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Update } from './Update';
 import axios from "axios";
 import { useSelector } from "react-redux";
+
+let toUpdateArray= [];
 
 export const Todo = () => {
 
@@ -44,7 +47,8 @@ export const Todo = () => {
         }
         else{
             try {
-                await axios.post(`${window.location.origin}/api/v2/addTask`, {
+                await axios.post(`http://localhost:8000/api/v2/addTask`, {
+
                     title: inputs.title,
                     body: inputs.body,
                     id: id,
@@ -61,7 +65,8 @@ export const Todo = () => {
 
     const del = async (Cardid) => {
         try {
-            await axios.delete(`${window.location.origin}/api/v2/deleteTask/${Cardid}`, { data: { id: id } });
+            await axios.delete(`http://localhost:8000/api/v2/deleteTask/${Cardid}`, { data: { id: id } });
+
             // Remove the deleted task from the array
             const updatedArray = array.filter(item => item._id !== Cardid);
             setArray(updatedArray);
@@ -89,17 +94,20 @@ export const Todo = () => {
         }
     };
     
-    
-
     const dis =(value) =>{
         document.getElementById("todo-update").style.display=value;
+    }
+
+    const update= (value)=>{
+        toUpdateArray= array[value];
     }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 if (id) {
-                    const response = await axios.get(`${window.location.origin}/api/v2/getTask/${id}`);
+                    const response = await axios.get(`http://localhost:8000/api/v2/getTask/${id}`);
+
                     setArray(response.data.list);
                 }
             }
@@ -158,7 +166,10 @@ export const Todo = () => {
                                                body={item.body} 
                                                id={item._id} 
                                                del={del}
-                                               display={dis} />
+                                               display={dis} 
+                                               updatedId={index}
+                                               toBeUpdate={update}
+                                               />
                                 </div>
                         )}
 
@@ -168,20 +179,21 @@ export const Todo = () => {
                                                body={item.body} 
                                                id={index} 
                                                tdel={tdel}
-                                               display={dis} />
+                                               display={dis} 
+                                               updatedId={index}
+                                               toBeUpdate={update}
+                                               />
                                 </div>
                         )}
-                        
-
 
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="todo-update">
+            <div className="todo-update" id="todo-update">
                 <div className='container'>
-                    <Update />
+                    <Update display={dis} update={toUpdateArray} />
                 </div>
             </div>
         </>

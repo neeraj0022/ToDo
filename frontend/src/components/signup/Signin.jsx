@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../store";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 
 const StyledFormControl = styled(FormControl)({
@@ -40,7 +41,7 @@ const SignIn = () => {
   {
     e.preventDefault();
     try {
-        const response = await axios.post(`${window.location.origin}/api/v1/signin`, inputs);
+        const response = await axios.post(`http://localhost:8000/api/v1/signin`, inputs);
         const user = response.data.user;
         if (user)
         {
@@ -82,6 +83,9 @@ const SignIn = () => {
             <StyledButton variant="contained" color="primary" onClick={submit}>
                 Submit
             </StyledButton>
+            <br /><br />
+            <p>Don't Have a <span style={{color: 'rgb(255, 96, 39)', fontWeight:'bold'}}>ToDo</span> Account?&nbsp;&nbsp;
+             <Link to="/signUp" style={{textDecoration:'none' , fontWeight:'bold'}}>Sign Up</Link></p>
 
         </div>
 

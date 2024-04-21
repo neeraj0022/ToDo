@@ -2,10 +2,11 @@
 import React from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import imagetwo from "../../images/imagetwo.png";
 
 const Home = ()=>{
-
+    const isLoggedIn= useSelector((state)=> state.isLoggedIn);
     return(
     <div className="home">
         <div className="container">
@@ -16,7 +17,13 @@ const Home = ()=>{
                 Become Focused, Organized and Calm with ToDo App 🔖<br />
                 The World's #1️⃣ Task Manager App.🕐
             </p><br />
-            <Link to="/todo"><button class="home-btn p-2" >Make Todo List</button></Link>
+
+            {isLoggedIn ? (
+                <Link to="/todo"><button class="home-btn p-2" >Make Todo List</button></Link>
+            ):(
+                <Link to="/todo"><button class="home-btn p-2" >Make Todo List</button></Link>
+            )}
+            
         </div>
 
         <div className="imgtwo">
