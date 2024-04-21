@@ -1,10 +1,11 @@
+
 import React from 'react';
 import "./todo.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import { useSelector } from "react-redux";
 
-export const TodoCards = ({title, body, id, del, tdel}) => {
+export const TodoCards = ({title, body, id, del, tdel, display, updatedId, toBeUpdate }) => {
  
   const isLoggedIn= useSelector((state)=> state.isLoggedIn );
   const deleteCard= ()=>{
@@ -25,8 +26,15 @@ export const TodoCards = ({title, body, id, del, tdel}) => {
         <br />
         <div className='d-flex container justify-content-between' >
             <div>
-              <UpdateIcon className='card-icons' />
+              <UpdateIcon className='card-icons'  
+              onClick={() => {
+                display("block");
+                toBeUpdate(updatedId);
+              }
+              } />
+            
             </div>
+            
             <div>
               <DeleteIcon className='card-icons' style={{color:"red"}} onClick={()=> {
                 deleteCard();

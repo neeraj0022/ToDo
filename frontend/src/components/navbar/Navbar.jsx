@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./Navbar.css";
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
@@ -17,7 +18,7 @@ const Navbar = () => {
     const logoutandHome = () => {
         logout();
         window.location.reload();
-        history("/");
+        history("/signIn");
     }
       
     const logout = () => {
@@ -30,9 +31,14 @@ const Navbar = () => {
         <>
               <nav className="navbar navbar-expand-lg  ">
                   <div className="container navbar-body">
-                    <Link to={"/"} className="navbar-brand">
+                    <Link className="navbar-brand">
                         <BookIcon color="primary" sx={{ fontSize: 40 }} />
-                        <Link className="navbar-brand" to="/todo">&nbsp; ToDo </Link>&nbsp;&nbsp;&nbsp;
+
+                        {isLoggedIn ? (
+                            <Link className="navbar-brand" to="/">&nbsp; ToDo </Link>
+                        ) : (
+                            <Link className="navbar-brand" to="/">&nbsp; ToDo </Link>
+                        )}
                     </Link>
 
                       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
